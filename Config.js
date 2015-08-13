@@ -160,6 +160,8 @@ var config = {
         sass: {
             folder: 'sass',
 
+            grouped: true,
+
             // https://github.com/sass/node-sass#options
             pluginOptions: {
                 outputStyle: gutils.env.production
@@ -181,6 +183,8 @@ var config = {
 
         less: {
             folder: 'less',
+
+            grouped: true,
 
             // https://github.com/plus3network/gulp-less#options
             pluginOptions: {}

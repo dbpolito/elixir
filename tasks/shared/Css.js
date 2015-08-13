@@ -8,7 +8,7 @@ var config = Elixir.config;
 module.exports = function(options) {
     var name = options.name;
 
-    options.task.log(options.src, options.output);
+    options.task.log(options.src, options.output, options.grouped);
 
     return (
         gulp
@@ -21,7 +21,7 @@ module.exports = function(options) {
             this.emit('end');
         })
         .pipe($.if(config.css.autoprefix.enabled, $.autoprefixer(config.css.autoprefix.options)))
-        .pipe($.concat(options.output.name))
+        .pipe($.if(options.grouped, $.concat(options.output.name)))
         .pipe($.if(config.production, $.minifyCss()))
         .pipe($.if(config.sourcemaps, $.sourcemaps.write('.')))
         .pipe(gulp.dest(options.output.baseDir))

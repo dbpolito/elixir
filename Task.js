@@ -103,8 +103,11 @@ Task.prototype.run = function() {
  * @param {string|array} src
  * @param {string|null}  output
  */
-Task.prototype.log = function(src, output) {
-    var task = this.name.substr(0,1).toUpperCase() + this.name.substr(1);
+Task.prototype.log = function(src, output, grouped) {
+    var task = this.name.substr(0,1).toUpperCase() + this.name.substr(1),
+        files = grouped
+            ? (output.path ? output.path : output)
+            : (output.baseDir ? output.baseDir : output);
 
     Elixir.Log
        .heading("Fetching " + task + " Source Files...")
@@ -113,7 +116,7 @@ Task.prototype.log = function(src, output) {
     if (output) {
         Elixir.Log
             .heading('Saving To...')
-            .files(output.path ? output.path : output);
+            .files(files);
     }
 };
 

@@ -26,6 +26,7 @@ var gulpTask = function(src, output, options) {
             src: paths.src,
             output: paths.output,
             task: this,
+            grouped: config.css.sass.grouped,
             pluginOptions: options || config.css.sass.pluginOptions
         });
     })

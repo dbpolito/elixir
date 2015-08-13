@@ -26,6 +26,7 @@ Elixir.extend('less', function(src, output, options) {
             src: paths.src,
             output: paths.output,
             task: this,
+            grouped: config.css.less.grouped,
             pluginOptions: options || config.css.less.pluginOptions
         });
     })
